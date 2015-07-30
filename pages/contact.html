@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <style type="text/css">
+        #Text1 {
+            width: 232px;
+        }
+        #email {
+            width: 239px;
+        }
+        #message {
+            width: 480px;
+        }
+    </style>
+</head><body onload="adjustparent()"><header>
+	<link rel="stylesheet" type="text/css" href="./contact_files/content.css">
+	<link rel="stylesheet" type="text/css" href="./contact_files/contact.css">
+	<script type="text/javascript" src="./contact_files/content.js"></script>
+</header>
+
+
+	<div id="content" style="height: 800px;">
+	<h1>Looking forward to answering your Email.</h1>
+	<br>
+        <form action="MAILTO:wubiasu@gmail.com" method="post" enctype="text/plain">
+      	<p><input type="text" name="name"  value="Your Name" id="name" onblur="if (this.value == ''){this.value = 'Your Name'; }" onfocus="if (this.value == 'Your Name') {this.value = '';}" /></p>
+        <p><input type="text" name="email" value="Your Email" id="email"  onblur="if (this.value == ''){this.value = 'Your Email'; }" onfocus="if (this.value == 'Your Email') {this.value = '';}" /></p>
+        <p><input type="text" name="url" value="Your Site" id="url" onblur="if (this.value == ''){this.value = 'Your Site'; }" onfocus="if (this.value == 'Your Site') {this.value = '';}" /></p>
+        <p><textarea rows="7" name="message" id="message" onblur="if (this.value == ''){this.value = 'Your Message'; }" onfocus="if (this.value == 'Your Message') {this.value = '';}" >Your Message</textarea></p>
+        <p><input type="submit" name="submit" value="Send Message" class="button" /></p>
+
+        </form>
+
+	
+
+
+</body></html>

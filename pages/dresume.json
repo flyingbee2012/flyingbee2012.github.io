@@ -1,0 +1,39 @@
+{
+ "name": "k-means clusters", 
+ "children": [
+  {
+   "name": "cluster_8", 
+   "children": [
+    {
+     "sector": "Capital Goods", 
+     "name": "AA", 
+     "cap": 9198578068.6, 
+     "fdate": "12/31/12"
+    }
+   ]
+  }, 
+  {
+   "name": "cluster_1", 
+   "children": [
+    {
+     "sector": "Technology", 
+     "name": "ACXM", 
+     "cap": 2395847275.9, 
+     "fdate": "3/31/12"
+    },
+    {
+     "sector": "Finance", 
+     "name": "CMSB", 
+     "cap": 15424008.84, 
+     "fdate": "9/30/12"
+    }, 
+    {
+     "sector": "Energy", 
+     "name": "ENR", 
+     "cap": 5796860544.39, 
+     "fdate": "9/30/12"
+    }
+   ]
+  }
+ ]
+}
