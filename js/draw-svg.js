@@ -42,7 +42,7 @@ svg_logo =
 var confJsonData = [{ "title": "Bi Wu", "slogan": "" }];
 var menuJsonData = [{ "title": "About Me", "target": "main", "cType": "html", "source": "page1.html" },
                     { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html" },
-                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "rJSON.json" },
+                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json" },
                     { "title": "Contact", "target": "main", "cType": "html", "source": "contact.html" }];
 var treeData = [
   {
@@ -52,8 +52,19 @@ var treeData = [
         {
             "name": "Work Experience"
           , "children": [
+                {
+                    "name": "PayPal - Software Engineer"
+              , "_children": [
+                {
+                    "name": "SSO (Single Sign-on)",
+                    "url": "https://www.youtube.com/v/-jm5_PAxtSc"
+                }
+
+              ]
+
+                },
             {
-                "name": "Intel UI",
+                "name": "Intel - UI Developer",
                 "parent": "Architect",
                 "_children": [
                   {
@@ -64,7 +75,7 @@ var treeData = [
                 ]
             },
             {
-                "name": "ASU RA"
+                "name": "ASU - Research Assistant"
               , "_children": [
                 {
                     "name": "Marketing Cloud",
@@ -98,14 +109,12 @@ var treeData = [
                     "url": "https://www.youtube.com/v/64ERoj3wpxw"
                 }
 
-
-
               ]
 
 
             },
             {
-                "name": "Qualia"
+                "name": "ASU - Teaching Assistant"
               , "_children": [
                 {
                     "name": "Communities",
@@ -116,7 +125,7 @@ var treeData = [
 
             },
               {
-                  "name": "ASU TA"
+                  "name": "Qualia - Web Developer"
               , "_children": [
                 {
                     "name": "Communities",
@@ -125,18 +134,8 @@ var treeData = [
 
               ]
 
-              },
-            {
-                "name": "PayPal"
-              , "_children": [
-                {
-                    "name": "SSO (Single Sign-on)",
-                    "url": "https://www.youtube.com/v/-jm5_PAxtSc"
-                }
-
-              ]
-
-            },
+              }
+          
 
           ]
         },
@@ -573,10 +572,15 @@ svg_menu.append("rect")
 //});
 
 //Add g for Page Contents
-svg_page =
+        svg_page =
+                svg.append("g")
+                        .attr("transform", "translate(0,0)")
+                        .attr("class", "svg-chart");
+
         svg.append("g")
-                .attr("transform", "translate(0,0)")
-                .attr("class", "svg-chart");
+                               .attr("transform", "translate(300,50)")
+                               .attr("class", "svg-tree");
+                        
 
 //Adding sattic page contents
 svg_page.append("rect")
@@ -856,25 +860,21 @@ function drawForceChart(dataSource) {
     svg_page.select(".svg-p-text")
             .attr("height", "1");
 
-
-    //width = viewportwidth - 270;
-    //height = viewportheight - 140;
-
     root = treeData[0];
     root.x0 = height / 2;
     root.y0 = 0;
 
     update(root);
 
-    //d3.json("pages/" + dataSource, function (json) {
-        //root = json;
-        //root.fixed = true;
-        //root.x = width / 2;
-        //root.y = height / 2;
-        //update();
-        //});
-    //}
-//)
+    
+
+    /*d3.json("json/" + dataSource, function (data) {
+        root = data;
+        root.x0 = width / 2;
+        root.y0 = 0;
+        update(root);
+        });*/
+
 }
 
 function update(source) {
@@ -883,13 +883,16 @@ function update(source) {
     var nodes = tree.nodes(root).reverse(),
         links = tree.links(nodes);
 
+    //source.y -= 500;
+
     // Normalize for fixed-depth.
     nodes.forEach(function (d) { d.y = d.depth * 180; });
 
     // Update the nodes…
-    var node = svg.selectAll("g.node")
+    var node = svg.selectAll("g .svg-tree").selectAll("g .node")
         .data(nodes, function (d) { return d.id || (d.id = ++i); });
 
+   
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node.enter().append("g")
         .attr("class", "node")
@@ -956,7 +959,7 @@ function update(source) {
         .style("fill-opacity", 1e-6);
 
     // Update the links…
-    var link = svg.selectAll("path.link")
+    var link = svg.selectAll("g .svg-tree").selectAll("path.link")
         .data(links, function (d) { return d.target.id; });
 
     // Enter any new links at the parent's previous position.
@@ -964,7 +967,7 @@ function update(source) {
         .attr("class", "link")
         .attr("d", function (d) {
             var o = { x: source.x0, y: source.y0 };
-            return diagonal({ source: o, target: o });
+            return diagonal({ source: o, target: { x: source.x0, y: source.y0} });
         });
 
     // Transition links to their new position.
@@ -986,6 +989,9 @@ function update(source) {
         d.x0 = d.x;
         d.y0 = d.y;
     });
+
+    //svg.selectAll("g.node").attr("transform", "translate(500, 0)");
+    //svg.selectAll("path.link").remove();
 }
 
 // Toggle children on click.
