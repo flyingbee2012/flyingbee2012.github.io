@@ -193,7 +193,7 @@ svg_page.append("foreignObject")
                 .delay(1000)
                 .duration(500)
                 .attr("fill", "rgba(0,0,0,1)")
-                //.attr("height", viewportheight - 140);
+                .attr("height", viewportheight - 140);
                 //.style("color", "rgba(0,0,0,1)");
 
 d3.text("pages/page1.html", function (data) {
