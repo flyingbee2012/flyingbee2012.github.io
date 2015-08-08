@@ -5,206 +5,159 @@ var svg_popupMenu;
 
 getSize();
 
-var svg_container =
-        d3.select("body").select("svg")
+addMenuItems();
+
+function addMenuItems() {
+    var svg_left_container =
+        d3.select(".left_svg")
                 .attr("width", viewportwidth - 10)
                 .attr("height", viewportheight - 10);
 
-var svg =
-        svg_container
-                .append("g")
-                        .attr("transform", "translate(0,0)");
+    var left_svg =
+            svg_left_container
+                    .append("g")
+                            .attr("transform", "translate(0,0)");
+    // Add g for branding
+    svg_brand =
+		left_svg.append("g")
+	                .attr("transform", "translate(0,0)")
+	                .attr("class", "svg-brand");
 
 
-// Add g for branding
-svg_brand =
-        svg.append("g")
-                .attr("transform", "translate(0,0)")
-                .attr("class", "svg-brand");
+    var confJsonData = [{ "title": "Bi Wu", "slogan": "" }];
+    var menuJsonData = [{ "title": "About Me", "target": "main", "cType": "html", "source": "about.html", "height": "700" },
+	                    { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html", "height": "1000" },
+	                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json", "height": "900" },
+	                    { "title": "Contact", "target": "main", "cType": "html", "source": "contact.html", "height": "500" }];
 
 
-var confJsonData = [{ "title": "Bi Wu", "slogan": "" }];
-var menuJsonData = [{ "title": "About Me", "target": "main", "cType": "html", "source": "page1.html" },
-                    { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html" },
-                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json" },
-                    { "title": "Contact", "target": "main", "cType": "html", "source": "contact.html" }];
+    svg_logo =
+	                svg_brand.selectAll(".svg-logo")
+	                                .data(confJsonData)
+	                        .enter().append("text")
+	                                .attr("class", "svg-logo")
+	                                .attr("x", "0")
+	                                .attr("font-size", "45px")
+	                                //.attr("font-family", "Times New Roman")
+	                                .attr("font-style", "italic")
+	                                .attr("fill", "red")
+	                                .attr("y", "50")
+	                                .attr("text-anchor", "start")
+	                                .text(function (d) { return d.title; })
+	                                //.text(function (d) { return "BIG-D"; })
+	                        .transition()
+	                                .duration(1000)
+	                                .attr("font-size", "45px")
+	                                .attr("x", "30");
 
 
-svg_logo =
-                svg_brand.selectAll(".svg-logo")
-                                .data(confJsonData)
-                        .enter().append("text")
-                                .attr("class", "svg-logo")
-                                .attr("x", "0")
-                                .attr("font-size", "45px")
-                                .attr("fill", "red")
-                                .attr("y", "50")
-                                .attr("text-anchor", "start")
-                                .text(function (d) { return d.title; })
-                                //.text(function (d) { return "BIG-D"; })
-                        .transition()
-                                .duration(1000)
-                                .attr("font-size", "45px")
-                                .attr("x", "10");
+    //Dynamic Text Slogan
+    svg_slogan =
+	        svg_brand.selectAll(".svg-slogan")
+	                        .data(confJsonData)
+	                .enter().append("text")
+	                        .attr("class", "svg-slogan")
+	                        .attr("fill", "black")
+	                        .attr("x", "0")
+	                        .attr("font-size", "14px")
+	                        .attr("y", "70")
+	                        .attr("text-anchor", "start")
+	                        .text(function (d) { return d.slogan; })
+	                        //.text(function (d) { return "Big Dashboard"; })
+	                .transition()
+	                        .duration(1000)
+	                        .attr("font-size", "14px")
+	                        .attr("x", "10");
+    //});
+
+    //Add g for Menu
+    svg_menu =
+	        left_svg.append("g")
+	                .attr("transform", "translate(0,0)")
+	                .attr("class", "svg-menu");
 
 
-//Dynamic Text Slogan
-svg_slogan =
-        svg_brand.selectAll(".svg-slogan")
-                        .data(confJsonData)
-                .enter().append("text")
-                        .attr("class", "svg-slogan")
-                        .attr("fill", "black")
-                        .attr("x", "0")
-                        .attr("font-size", "14px")
-                        .attr("y", "70")
-                        .attr("text-anchor", "start")
-                        .text(function (d) { return d.slogan; })
-                        //.text(function (d) { return "Big Dashboard"; })
-                .transition()
-                        .duration(1000)
-                        .attr("font-size", "14px")
-                        .attr("x", "10");
-//});
+    // add the menu items
+    svg_menu.selectAll(".svg-menu-item")
+	                .data(menuJsonData)
+	        .enter().append("rect")
+	                .attr("class", "svg-menu-item")
+	                .attr("rx", "6")
+	                .attr("ry", "6")
+	                .attr("x", "0")
+	                .attr("y", function (d, i) { return (94 + (i * 50)); })
+	                .attr("height", "40")
+	                .attr("width", "1")
+	                .attr("fill", "rgba(0,0,0,.05)")
+	                .attr("stroke", "rgba(99,99,99,1)")
+	                .attr("stroke-width", "2")
+	                .attr("class", "svg-menu-item")
+	                .transition()
+	                        .delay(function (d, i) { return 500 + i * 250 })
+	                        .duration(500)
+	                        .attr("width", "200")
+	                        .attr("x", "5");
 
-//Add g for Menu
-svg_menu =
-        svg.append("g")
-                .attr("transform", "translate(0,0)")
-                .attr("class", "svg-menu");
-
-
-// add the menu items
-svg_menu.selectAll(".svg-menu-item")
-                .data(menuJsonData)
-        .enter().append("rect")
-                .attr("class", "svg-menu-item")
-                .attr("rx", "6")
-                .attr("ry", "6")
-                .attr("x", "0")
-                .attr("y", function (d, i) { return (94 + (i * 50)); })
-                .attr("height", "40")
-                .attr("width", "1")
-                .attr("fill", "rgba(0,0,0,.05)")
-                .attr("stroke", "rgba(99,99,99,1)")
-                .attr("stroke-width", "2")
-                .attr("class", "svg-menu-item")
-                .transition()
-                        .delay(function (d, i) { return 500 + i * 250 })
-                        .duration(500)
-                        .attr("width", "200")
-                        .attr("x", "5");
-
-// add menu text
-svg_menu.selectAll(".svg-menu-text")
-                .data(menuJsonData)
-        .enter().append("text")
-                .attr("class", "svg-menu-text")
-                .attr("font-size", "20px")
-                .attr("fill", "rgba(255,0,0,0")
-                .attr("x", "20")
-                .attr("y", function (d, i) { return (120 + (i * 50)); })
-                .attr("text-anchor", "start")
-                .text(function (d) { return d.title })
-                        .transition()
-                        .delay(function (d, i) { return 500 + i * 250 })
-                        .duration(500)
-                        .attr("fill", "rgba(255,0,0,1");
+    // add menu text
+    svg_menu.selectAll(".svg-menu-text")
+	                .data(menuJsonData)
+	        .enter().append("text")
+	                .attr("class", "svg-menu-text")
+	                .attr("font-size", "20px")
+	                .attr("fill", "rgba(255,0,0,0")
+	                .attr("x", "20")
+	                .attr("y", function (d, i) { return (120 + (i * 50)); })
+	                .attr("text-anchor", "start")
+	                .text(function (d) { return d.title })
+	                        .transition()
+	                        .delay(function (d, i) { return 500 + i * 250 })
+	                        .duration(500)
+	                        .attr("fill", "rgba(255,0,0,1");
 
 
 
-// add menu mask
-svg_menu.selectAll(".svg-menu-mask")
-                .data(menuJsonData)
-        .enter().append("rect")
-                .attr("class", "svg-menu-mask")
-                .attr("ry", "6")
-                .attr("rx", "6")
-                .attr("y", function (d, i) { return (94 + (i * 50)); })
-                .attr("x", "0")
-                .attr("height", "40")
-                .attr("width", "1")
-                .attr("fill", "rgba(0,0,0,.0)")
-                .attr("stroke", "rgba(99,99,99,1)")
-                .attr("stroke-width", "2")
-                .attr("class", "svg-menu-mask")
-                .on("click", openPage)
-                .transition()
-                        .delay(function (d, i) { return 500 + i * 250 })
-                        .duration(500)
-                        .attr("width", "200")
-                        .attr("x", "5");
-                
-svg_page =
-               svg.append("g")
-                       .attr("transform", "translate(0,0)")
-                       .attr("class", "svg-chart");
-svg.append("g")
-                               .attr("transform", "translate(300,50)")
-                               .attr("class", "svg-tree");
+    // add menu mask
+    svg_menu.selectAll(".svg-menu-mask")
+	                .data(menuJsonData)
+	        .enter().append("rect")
+	                .attr("class", "svg-menu-mask")
+	                .attr("ry", "6")
+	                .attr("rx", "6")
+	                .attr("y", function (d, i) { return (94 + (i * 50)); })
+	                .attr("x", "0")
+	                .attr("height", "40")
+	                .attr("width", "1")
+	                .attr("fill", "rgba(0,0,0,.0)")
+	                .attr("stroke", "rgba(99,99,99,1)")
+	                .attr("stroke-width", "2")
+	                .attr("class", "svg-menu-mask")
+	                .on("click", openPage)
+	                .transition()
+	                        .delay(function (d, i) { return 500 + i * 250 })
+	                        .duration(500)
+	                        .attr("width", "200")
+	                        .attr("x", "5");
+}
 
-//Adding sattic page contents
-svg_page.append("rect")
-        .attr("ry", "6")
-        .attr("rx", "6")
-        .attr("y", "25")
-        .attr("x", "150")
-        .attr("height", viewportheight - 40)
-        .attr("width", "1")
-        .attr("fill", "rgba(0,0,0,0)")
-        .attr("stroke", "rgba(99,99,99,0)")
-        .attr("stroke-width", "2")
-        .attr("class", "svg-menu-item")
-        //.on("click", showMenu)
-        .transition()
-                .delay(500)
-                .duration(500)
-                .attr("stroke", "rgba(99,99,99,1)")
-                .attr("width", viewportwidth - 240)
-                .attr("x", "220");
+function loadAboutMe() {
 
-svg_page.append("text")
-        .attr("class", "svg-menu-text")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "32px")
-        .attr("fill", "rgba(255,0,0,0)")
-        .attr("x", "240")
-        .attr("y", "70")
-        .attr("text-anchor", "start")
-        .text("About me")
-                .transition()
-                .delay(750)
-                .duration(500)
-                .attr("fill", "rgba(255,0,0,1)");
+    $("#right_cell").empty();
+    var $htmlDiv = $("<div class='html_div'></div>");
+    $.get('pages/about.html').success(function (data) {
+        $(".right_cell").append($htmlDiv);
+        $(".html_div").hide().fadeIn(1000).html(data);
+    });
 
-svg_page.append("foreignObject")
-        .attr("class", "svg-p-text")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "18px")
-        .attr("fill", "rgba(255,0,0,0)")
-        .attr("x", "240")
-        .attr("y", "110")
-        .attr("width", viewportwidth - 270)
-        .attr("height", "1")
-        //.style("color", "rgba(0,0,0,0)")
-        //.on("click", showMenu)
-        .html("Loading...")
-                .transition()
-                .delay(1000)
-                .duration(500)
-                .attr("fill", "rgba(0,0,0,1)")
-                .attr("height", viewportheight - 140);
-                //.style("color", "rgba(0,0,0,1)");
 
-var dd;
-console.log("abc");
+    //$("#right_cell").height(200);
+    $("#right_cell").animate({ height: '50' });
+    $("#right_cell").animate({ height: '700' });
 
-d3.text("pages/page1.html", function (data) {
-    console.log("HTML Data:" + data);
-    dd = data;
-    svg_page.select(".svg-p-text")
-            .html("<div class='svg-contents'>" + data + "</div>");
-});
+
+}
+
+
+loadAboutMe();
 
 
 //Responsive
@@ -242,63 +195,57 @@ function getSize() {
 function responsiveSVG() {
     getSize();
     // Adjust SVG container
-    svg_container
-            .attr("width", viewportwidth - 10)
-            .attr("height", viewportheight - 10);
+    //    svg_right_container
+    //            .attr("width", viewportwidth - 10)
+    //            .attr("height", viewportheight - 10);
 
-    svg_page.select("rect")
-            .transition()
-                    .attr("width", viewportwidth - 240)
-                    .attr("height", viewportheight - 40);
-
-    svg_page.select(".svg-p-text")
-            .transition()
-                    .attr("width", viewportwidth - 270)
-                    .attr("height", viewportheight - 140);
+    //    svg_page.select("rect")
+    //            .transition()
+    //                    .attr("width", viewportwidth - 240)
+    //                    .attr("height", viewportheight - 40);
+    //
+    //    svg_page.select(".svg-p-text")
+    //            .transition()
+    //                    .attr("width", viewportwidth - 270)
+    //                    .attr("height", viewportheight - 140);
 }
 
-function openPage(d)
-{
-    menuVisible=true;
+function openPage(d) {
+    //menuVisible=true;
     //showMenu()
     //Update page title
-    svg_page.select("text")
-            .transition()
-                    .attr("fill", "rgba(255,0,0,0)")
-            .transition()
-                    .text(d.title)
-                    .attr("fill", "rgba(255,0,0,1)");
-        
+    //    svg_page.select("text")
+    //            .transition()
+    //                    .attr("fill", "rgba(255,0,0,0)")
+    //            .transition()
+    //                    .text(d.title)
+    //                    .attr("fill", "rgba(255,0,0,1)");
+
     //update page contents
+
     //choose chart type
-    if (d.cType == "force")
-    {
-        drawForceChart(d.source);
+    if (d.cType == "force") {
+        drawResumeTree(d.source);
     }
-    else
-    {
-        d3.text("pages/" + d.source, function(data){
-            svg_page.select(".svg-p-text")
-                    .attr("height", "1")
-                    .html("<div class='svg-contents'>" + data + "</div>")
-                    .transition()
-                            .delay(650)
-                            .duration(1000)
-                            .attr("height", viewportheight - 140);
+    else {
+        d3.text("pages/" + d.source, function (data) {
+
+            $("#right_cell").empty();
+            var $htmlDiv = $("<div class='html_div'></div>");
+            $(".right_cell").append($htmlDiv);
+            $(".html_div").hide().fadeIn(1000).html(data);
+
+
         });
-                
-        // clear the chart
-        svg.selectAll("g.node").remove();
-        svg.selectAll("path.link").remove();
-       
+
     }
-    svg_page.select("rect")
-            .transition()
-                    .duration(400)
-                    .attr("height", "65")
-            .transition()
-                    .duration(1000)
-                    .attr("height", viewportheight - 40);
+
+    getSize();
+
+    $("#right_cell").animate({ height: 60 });
+    $("#right_cell").animate({ height: d.height });
+
+
 
 }
 
@@ -327,10 +274,35 @@ var diagonal = d3.svg.diagonal()
     .projection(function (d) { return [d.y, d.x]; });
 
 
-function drawForceChart(dataSource) {
-    // Hide Text
-    svg_page.select(".svg-p-text")
-            .attr("height", "1");
+function drawResumeTree(dataSource) {
+
+    // remove html content in the right cell
+    $.get('pages/contact.html').success(function (data) {
+        $(".html_div").remove();
+    });
+    d3.select(".right_cell").append("svg")
+                            .attr("class", "right_svg")
+                            .attr("id", "right_svg")
+                            .attr("width", viewportwidth - 10)
+                            .attr("height", viewportheight - 10);
+
+
+    // add svg into the right cell
+    var svg_container2 = d3.select(".right_svg");
+
+    svg =
+        svg_container2
+                .append("g")
+                        .attr("transform", "translate(0,0)");
+
+    svg_page =
+        svg.append("g")
+                .attr("transform", "translate(0,0)")
+                .attr("class", "svg-chart");
+
+    svg.append("g")
+                        .attr("transform", "translate(300,50)")
+                        .attr("class", "svg-tree");
 
     root = resumeData[0];
     root.x0 = height / 2;
@@ -338,14 +310,6 @@ function drawForceChart(dataSource) {
 
     update(root);
 
-
-
-    /*d3.json("json/" + dataSource, function (data) {
-        root = data;
-        root.x0 = width / 2;
-        root.y0 = 0;
-        update(root);
-        });*/
 
 }
 
@@ -362,7 +326,10 @@ function update(source) {
     // Normalize for fixed-depth.
     nodes.forEach(function (d) { d.y = d.depth * 180; });
 
-    // Update the nodes
+
+
+    // Update the nodes
+
     var node = svg.selectAll("g .svg-tree").selectAll("g .node")
         .data(nodes, function (d) { return d.id || (d.id = ++i); });
 
@@ -432,7 +399,8 @@ function update(source) {
     nodeExit.select("text")
         .style("fill-opacity", 1e-6);
 
-    // Update the links
+    // Update the links
+
     var link = svg.selectAll("g .svg-tree").selectAll("path.link")
         .data(links, function (d) { return d.target.id; });
 
