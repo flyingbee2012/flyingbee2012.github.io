@@ -26,7 +26,7 @@ function addMenuItems() {
 
     var confJsonData = [{ "title": "Bi Wu", "slogan": "" }];
     var menuJsonData = [{ "title": "About Me", "target": "main", "cType": "html", "source": "about.html", "height": "700" },
-	                    { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html", "height": "1000" },
+	                    { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html", "height": "1100" },
 	                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json", "height": "800" },
 	                    { "title": "Contact", "target": "main", "cType": "html", "source": "contact.html", "height": "500" }];
 
