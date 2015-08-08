@@ -10,8 +10,8 @@ addMenuItems();
 function addMenuItems() {
     var svg_left_container =
         d3.select(".left_svg")
-                .attr("width", viewportwidth - 10)
-                .attr("height", viewportheight - 10);
+                .attr("width", 250)
+                .attr("height", 600);
 
     var left_svg =
             svg_left_container
@@ -27,7 +27,7 @@ function addMenuItems() {
     var confJsonData = [{ "title": "Bi Wu", "slogan": "" }];
     var menuJsonData = [{ "title": "About Me", "target": "main", "cType": "html", "source": "about.html", "height": "700" },
 	                    { "title": "Resume", "target": "main", "cType": "html", "source": "resume.html", "height": "1000" },
-	                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json", "height": "900" },
+	                    { "title": "Dynamic Resume", "target": "main", "cType": "force", "source": "resume.json", "height": "800" },
 	                    { "title": "Contact", "target": "main", "cType": "html", "source": "contact.html", "height": "500" }];
 
 
@@ -283,7 +283,7 @@ function drawResumeTree(dataSource) {
     d3.select(".right_cell").append("svg")
                             .attr("class", "right_svg")
                             .attr("id", "right_svg")
-                            .attr("width", viewportwidth - 10)
+                            .attr("width", viewportwidth*0.75)
                             .attr("height", viewportheight - 10);
 
 
