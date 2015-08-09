@@ -281,7 +281,7 @@ function openPage(d) {
             $("#right_cell").empty();
             var $htmlDiv = $("<div class='html_div'></div>");
             $(".right_cell").append($htmlDiv);
-            $(".html_div").hide().fadeIn(1000).html(data);
+            $(".html_div").hide().fadeIn(2000).html(data);
 
 
         });
@@ -295,7 +295,7 @@ function openPage(d) {
     });
     $("#right_cell").animate({
         height: d.height
-    });
+    }, 800);
 
 
 
@@ -365,7 +365,9 @@ function drawResumeTree(dataSource) {
     root.x0 = height / 2;
     root.y0 = 0;
 
-    update(root);
+    setTimeout(function () {
+        update(root);
+    }, 500);
 
 
 }
