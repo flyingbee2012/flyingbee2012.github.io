@@ -7,72 +7,97 @@ resumeData = [
             "name": "Work Experience",
             "children": [
               {
-                  "name": "Intel UI",
+                  "name": "PayPal-Sotware Engineer",
                   "parent": "Architect",
                   "_children": [
                     {
-                        "name": "Multi-tenant Architecture",
+                        "name": "PPCC Wall Projectors",
                         "url": "https://www.youtube.com/v/jrKA3cJmoms"
-                    }
+                    },
+                    {
+                        "name": "Domains Monitoring",
+                        "url": "https://www.youtube.com/v/jrKA3cJmoms"
+                    },
+                    {
+                        "name": "Front-End Development",
+                        "url": "https://www.youtube.com/v/jrKA3cJmoms"
+                    },
+                    {
+                        "name": "System Design and Development",
+                        "url": "https://www.youtube.com/v/jrKA3cJmoms"
+                    },
+                    {
+                        "name": "Database Management",
+                        "url": "https://www.youtube.com/v/jrKA3cJmoms"
+                    },
+                    {
+                        "name": "Software Testing",
+                        "url": "https://www.youtube.com/v/jrKA3cJmoms"
+                    },
                   ]
               },
               {
-                  "name": "ASU RA",
-                  "_children": [
+                  "name": "Intel-UI Developer",
+                  "_children": [                 
                     {
-                        "name": "Marketing Cloud"
-                    },
-                    {
-                        "name": "Customer Journey",
+                        "name": "Interactive GUI Design",
                         "url": "https://www.youtube.com/v/OUWwZcVA-mM"
                     },
                     {
-                        "name": "Social Studio",
-                        "url": "https://www.youtube.com/v/27P6am1sIFQ"
-                    },
-                    {
-                        "name": "Best Email Practices",
+                        "name": "Interactive GUI implementation",
                         "url": "https://www.youtube.com/v/UqRGfbPsTAI"
                     },
                     {
-                        "name": "Social Best Practices for Events",
-                        "url": "https://www.youtube.com/v/hDjqBEy-a4M"
+                        "name": "Data Processing",
+                        "url": "https://www.youtube.com/v/27P6am1sIFQ"
                     },
                     {
-                        "name": "Deliverability Guide to the Inbox",
-                        "url": "https://www.youtube.com/v/NUEt3cZmSTo"
-                    },
-                    {
-                        "name": "Achieve List Growth Results",
-                        "url": "https://www.youtube.com/v/64ERoj3wpxw"
+                        "name": "Database Management",
+                        "url": "https://www.youtube.com/v/UqRGfbPsTAI"
                     }
                   ]
               },
               {
-                  "name": "Qualia",
+                  "name": "ASU-Research Assistant",
                   "_children": [
                     {
-                        "name": "Communities",
+                        "name": "Hierarchical Data Visualization",
+                        "url": "https://www.youtube.com/v/iVS0p7xAVLQ"
+                    },
+                    {
+                        "name": "Design and Implementation",
+                        "url": "https://www.youtube.com/v/iVS0p7xAVLQ"
+                    },
+                    {
+                        "name": "Data Structure and Algorithm Design",
                         "url": "https://www.youtube.com/v/iVS0p7xAVLQ"
                     }
                   ]
               },
               {
-                  "name": "ASU TA",
+                  "name": "ASU-Teaching Assistant",
                   "_children": [
                     {
-                        "name": "Communities",
+                        "name": "Developing Software for Engineering Applications",
+                        "url": "https://www.youtube.com/v/iVS0p7xAVLQ"
+                    },
+                    {
+                        "name": "MFC and OpenGL",
                         "url": "https://www.youtube.com/v/iVS0p7xAVLQ"
                     }
                   ]
               },
               {
-                  "name": "PayPal",
+                  "name": "Qualia-Web Developer",
                   "_children": [
                     {
-                        "name": "SSO (Single Sign-on)",
+                        "name": "MVVM by Knockout.js",
                         "url": "https://www.youtube.com/v/-jm5_PAxtSc"
-                    }
+                    },
+                    {
+                        "name": "MVC by ASP.NET",
+                        "url": "https://www.youtube.com/v/-jm5_PAxtSc"
+                    },
                   ]
               }
             ]
@@ -81,39 +106,13 @@ resumeData = [
             "name": "Academic Projects",
             "_children": [
               {
-                  "name": "3D Visualizer",
-                  "_children": [
-                    {
-                        "name": "Salesforce Data Access and Security",
-                        "url": "https://www.youtube.com/v/17dr2GMvgd8"
-                    },
-                    {
-                        "name": "Who Sees What",
-                        "url": "https://www.youtube.com/v/X3Hg6OXhPO8"
-                    },
-                    {
-                        "name": "Introduction to the Salesforce Security Model",
-                        "url": "https://www.youtube.com/v/c1ccSXlVjXk"
-                    }
-                  ]
+                  "name": "3D Visualizer"                 
               },
               {
-                  "name": "Data Visualization",
-                  "_children": [
-                    {
-                        "name": "Get Started with Sales Cloud Administration",
-                        "url": "https://www.youtube.com/v/MSp61khlP9s"
-                    }
-                  ]
+                  "name": "Data Visualization"  
               },
               {
-                  "name": "Ray Tracer",
-                  "_children": [
-                    {
-                        "name": "Get Started with Service Cloud Administration",
-                        "url": "https://www.youtube.com/v/fJFlIqtlscI"
-                    }
-                  ]
+                  "name": "Ray Tracer"
               }
             ]
         },
@@ -121,31 +120,13 @@ resumeData = [
             "name": "Honors and Certificates",
             "_children": [
               {
-                  "name": "IBM Certificed ODB solution Designer",
-                  "_children": [
-                    {
-                        "name": "Clicks or Code",
-                        "url": "https://www.youtube.com/v/R_Ir4bq4px0"
-                    }
-                  ]
+                  "name": "IBM Certificed ODB solution Designer"           
               },
               {
-                  "name": "C++ R2",
-                  "_children": [
-                    {
-                        "name": "Apex Coding Webinar",
-                        "url": "https://www.youtube.com/v/WBeCWlbGX38"
-                    }
-                  ]
+                  "name": "C++ R2 Certificate"
               },
               {
-                  "name": "First Class...",
-                  "_children": [
-                    {
-                        "name": "Metadata API Webinar",
-                        "url": "https://www.youtube.com/v/S_R0Tzp1HmY"
-                    }
-                  ]
+                  "name": "First Class UESTC Scholarship"
               }
             ]
         },
@@ -154,11 +135,11 @@ resumeData = [
             "_children": [
               {
                   "name": "ASU",
-                  "url": "https://www.youtube.com/v/N5XNIuVdBf0"
+                  "url": "https://www.asu.edu"
               },
               {
                   "name": "UESTC",
-                  "url": "https://www.youtube.com/v/N5XNIuVdBf0"
+                  "url": "https://www.uestc.edu.cn"
               }
             ]
         },
