@@ -290,7 +290,7 @@ function openPage(d) {
 
     getSize();
 
-    $("#right_cell").width(viewportwidth * 0.75);
+    $("#right_cell").width(viewportwidth *0.7168);
     $("#right_cell").animate({
         height: 60
     });
