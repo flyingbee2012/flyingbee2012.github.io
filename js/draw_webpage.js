@@ -5,6 +5,36 @@ var svg_popupMenu;
 
 getSize();
 
+var confJsonData = [{
+    "title": "Bi Wu",
+    "slogan": ""
+}];
+var menuJsonData = [{
+    "title": "About Me",
+    "target": "main",
+    "cType": "html",
+    "source": "about.html",
+    "height": viewportheight - 50
+}, {
+    "title": "Resume",
+    "target": "main",
+    "cType": "html",
+    "source": "resume.html",
+    "height": "1400"
+}, {
+    "title": "Dynamic Resume",
+    "target": "main",
+    "cType": "force",
+    "source": "resume.json",
+    "height": viewportheight - 50
+}, {
+    "title": "Contact",
+    "target": "main",
+    "cType": "html",
+    "source": "contact.html",
+    "height": "500"
+}];
+
 addMenuItems();
 
 function addMenuItems() {
@@ -22,38 +52,6 @@ function addMenuItems() {
         left_svg.append("g")
         .attr("transform", "translate(0,0)")
         .attr("class", "svg-brand");
-
-
-    var confJsonData = [{
-        "title": "Bi Wu",
-        "slogan": ""
-    }];
-    var menuJsonData = [{
-        "title": "About Me",
-        "target": "main",
-        "cType": "html",
-        "source": "about.html",
-        "height": "800"
-    }, {
-        "title": "Resume",
-        "target": "main",
-        "cType": "html",
-        "source": "resume.html",
-        "height": "1400"
-    }, {
-        "title": "Dynamic Resume",
-        "target": "main",
-        "cType": "force",
-        "source": "resume.json",
-        "height": "800"
-    }, {
-        "title": "Contact",
-        "target": "main",
-        "cType": "html",
-        "source": "contact.html",
-        "height": "500"
-    }];
-
 
     svg_logo =
         svg_brand.selectAll(".svg-logo")
@@ -191,12 +189,13 @@ function loadAboutMe() {
     });
 
     //getSize();
+    //var aboutHeight = menuJsonData[0].height;
     //$("#right_cell").width(viewportwidth * 0.75);
     $("#right_cell").animate({
         height: '50'
     });
     $("#right_cell").animate({
-        height: '800'
+        height: viewportheight - 50
     });
 
 
@@ -271,6 +270,7 @@ function openPage(d) {
     //                    .attr("fill", "rgba(255,0,0,1)");
 
     //update page contents
+    var rectHeight;
 
     //choose chart type
     if (d.cType == "force") {
@@ -289,6 +289,7 @@ function openPage(d) {
     }
 
     getSize();
+
     $("#right_cell").width(viewportwidth * 0.75);
     $("#right_cell").animate({
         height: 60
@@ -296,7 +297,6 @@ function openPage(d) {
     $("#right_cell").animate({
         height: d.height
     }, 800);
-
 
 
 }
@@ -335,7 +335,8 @@ function drawResumeTree(dataSource) {
         $(".html_div").remove();
     });
 
-    if (d3.select(".right_cell").select("svg").empty()) {
+    d3.select(".right_cell").selectAll("*").remove();
+   
         d3.select(".right_cell").append("svg")
             .attr("class", "right_svg")
             .attr("id", "right_svg")
@@ -357,9 +358,9 @@ function drawResumeTree(dataSource) {
             .attr("class", "svg-chart");
 
         svg.append("g")
-            .attr("transform", "translate(300,50)")
+            .attr("transform", "translate(200,0)")
             .attr("class", "svg-tree");
-    }
+   
 
     root = resumeData[0];
     root.x0 = height / 2;
