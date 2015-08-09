@@ -190,8 +190,8 @@ function loadAboutMe() {
         $(".html_div").hide().fadeIn(1000).html(data);
     });
 
-
-    //$("#right_cell").height(200);
+    //getSize();
+    //$("#right_cell").width(viewportwidth * 0.75);
     $("#right_cell").animate({
         height: '50'
     });
@@ -204,10 +204,16 @@ function loadAboutMe() {
 
 
 loadAboutMe();
-
+/*openPage({
+    "title": "About Me",
+    "target": "main",
+    "cType": "html",
+    "source": "about.html",
+    "height": "800"
+});*/
 
 //Responsive
-window.onresize = responsiveSVG;
+//window.onresize = responsiveSVG;
 
 //Show Popup Menu
 var menuVisible = false;
@@ -283,7 +289,7 @@ function openPage(d) {
     }
 
     getSize();
-
+    $("#right_cell").width(viewportwidth * 0.75);
     $("#right_cell").animate({
         height: 60
     });
@@ -328,29 +334,32 @@ function drawResumeTree(dataSource) {
     $.get('pages/contact.html').success(function (data) {
         $(".html_div").remove();
     });
-    d3.select(".right_cell").append("svg")
-        .attr("class", "right_svg")
-        .attr("id", "right_svg")
-        .attr("width", viewportwidth * 0.75)
-        .attr("height", viewportheight - 10);
+
+    if (d3.select(".right_cell").select("svg").empty()) {
+        d3.select(".right_cell").append("svg")
+            .attr("class", "right_svg")
+            .attr("id", "right_svg")
+            .attr("width", viewportwidth * 0.75)
+            .attr("height", viewportheight - 10);
 
 
-    // add svg into the right cell
-    var svg_container2 = d3.select(".right_svg");
+        // add svg into the right cell
+        var svg_container2 = d3.select(".right_svg");
 
-    svg =
-        svg_container2
-        .append("g")
-        .attr("transform", "translate(0,0)");
+        svg =
+            svg_container2
+            .append("g")
+            .attr("transform", "translate(0,0)");
 
-    svg_page =
+        svg_page =
+            svg.append("g")
+            .attr("transform", "translate(0,0)")
+            .attr("class", "svg-chart");
+
         svg.append("g")
-        .attr("transform", "translate(0,0)")
-        .attr("class", "svg-chart");
-
-    svg.append("g")
-        .attr("transform", "translate(300,50)")
-        .attr("class", "svg-tree");
+            .attr("transform", "translate(300,50)")
+            .attr("class", "svg-tree");
+    }
 
     root = resumeData[0];
     root.x0 = height / 2;
