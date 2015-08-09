@@ -35,7 +35,6 @@ var menuJsonData = [{
     "height": "500"
 }];
 
-addMenuItems();
 
 function addMenuItems() {
     var svg_left_container =
@@ -62,7 +61,7 @@ function addMenuItems() {
         .attr("font-size", "45px")
         //.attr("font-family", "Times New Roman")
         .attr("font-style", "italic")
-        .attr("fill", "red")
+        .attr("fill", "blue")
         .attr("y", "50")
         .attr("text-anchor", "start")
         .text(function (d) {
@@ -134,7 +133,7 @@ function addMenuItems() {
         .enter().append("text")
         .attr("class", "svg-menu-text")
         .attr("font-size", "20px")
-        .attr("fill", "rgba(255,0,0,0")
+        .attr("fill", "rgba(0,0,255,0")
         .attr("x", "20")
         .attr("y", function (d, i) {
             return (120 + (i * 50));
@@ -148,7 +147,7 @@ function addMenuItems() {
             return 500 + i * 250
         })
         .duration(500)
-        .attr("fill", "rgba(255,0,0,1");
+        .attr("fill", "rgba(0,0,255,1");
 
 
 
@@ -201,7 +200,7 @@ function loadAboutMe() {
 
 }
 
-
+addMenuItems();
 loadAboutMe();
 /*openPage({
     "title": "About Me",
@@ -381,14 +380,11 @@ function update(source) {
     var nodes = tree.nodes(root).reverse(),
         links = tree.links(nodes);
 
-    //source.y -= 500;
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
         d.y = d.depth * 180;
     });
-
-
 
     // Update the nodes
 
@@ -436,7 +432,7 @@ function update(source) {
             d3.select(this).attr('style', 'font-weight:bold');
             if (d.url != null) {
                 //  window.location=d.url; 
-                $('#vid').remove();
+                /*$('#vid').remove();
 
                 $('#vid-container').append($('<embed>')
                     .attr('id', 'vid')
@@ -447,7 +443,8 @@ function update(source) {
                     .attr('height', "100%")
                     .attr('allowfullscreen', "true")
                     .attr('title', d.name)
-                )
+                )*/
+                window.open(d.url, '_blank');
             }
         });
 
@@ -531,8 +528,6 @@ function update(source) {
         d.y0 = d.y;
     });
 
-    //svg.selectAll("g.node").attr("transform", "translate(500, 0)");
-    //svg.selectAll("path.link").remove();
 }
 
 // Toggle children on click.

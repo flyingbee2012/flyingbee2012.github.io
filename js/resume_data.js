@@ -139,7 +139,7 @@ resumeData = [
               },
               {
                   "name": "UESTC",
-                  "url": "https://www.uestc.edu.cn"
+                  "url": "http://www.uestc.edu.cn"
               }
             ]
         },
