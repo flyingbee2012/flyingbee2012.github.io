@@ -20,7 +20,7 @@ var menuJsonData = [{
     "target": "main",
     "cType": "html",
     "source": "resume.html",
-    "height": "1400"
+    "height": "1300"
 }, {
     "title": "Dynamic Resume",
     "target": "main",
