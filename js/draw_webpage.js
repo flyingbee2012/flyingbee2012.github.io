@@ -357,7 +357,7 @@ function drawResumeTree(dataSource) {
             .attr("class", "svg-chart");
 
         svg.append("g")
-            .attr("transform", "translate(200,0)")
+            .attr("transform", "translate(200,50)")
             .attr("class", "svg-tree");
    
 
